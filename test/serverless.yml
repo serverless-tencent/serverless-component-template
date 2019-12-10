@@ -1,0 +1,4 @@
+MyComponent:
+  component: ../
+  inputs:
+    region: ap-guangzhou
