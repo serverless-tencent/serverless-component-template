@@ -1,47 +1,33 @@
 # serverless-component-template
 
-[简体中文](./README.zh-CN.md) | English
+简体中文 | [English](./README.en.md)
 
-## Introduction
+## 简介
 
-Serverless Component Template for Tencent Cloud.
+腾讯云 Serverless Component 开发模板
 
-## Content
+## 目录
 
-1. [Install](#1-install)
-2. [Create](#2-create)
-3. [Configure](#3-configure)
-4. [Deploy](#4-deploy)
-5. [Remove](#5-Remove)
+1. [安装](#1-安装)
+2. [配置](#2-配置)
+3. [部署](#3-部署)
+4. [移除](#4-移除)
 
-### 1. Install
+### 1. 安装
 
-Install the Serverless Framework globally:
+通过 npm 全局安装 [serverless cli](https://github.com/serverless/serverless)
 
 ```shell
 $ npm install -g serverless
 ```
 
-### 2. Create
+### 2. 配置
 
-Just create the following simple boilerplate:
+本地创建 `serverless.yml` 文件，在其中进行如下配置
 
 ```shell
 $ touch serverless.yml
-$ touch .env           # your Tencent api keys
 ```
-
-Add the access keys of a [Tencent CAM Role](https://console.cloud.tencent.com/cam/capi) with `AdministratorAccess` in the `.env` file, using this format:
-
-```
-# .env
-TENCENT_SECRET_ID=XXX
-TENCENT_SECRET_KEY=XXX
-```
-
-- If you don't have a Tencent Cloud account, you could [sign up](https://intl.cloud.tencent.com/register) first.
-
-### 3. Configure
 
 ```yml
 # serverless.yml
@@ -52,22 +38,46 @@ MyComponent:
     region: ap-guangzhou
 ```
 
-- [More Options](./docs/configure.md)
+- [更多配置](./docs/configure.md)
 
-### 4. Deploy
+### 3. 部署
+
+如您的账号未 [登陆](https://cloud.tencent.com/login) 或 [注册](https://cloud.tencent.com/register) 腾讯云，您可以直接通过 `微信` 扫描命令行中的二维码进行授权登陆和注册。
+
+通过 `sls` 命令进行部署，并可以添加 `--debug` 参数查看部署过程中的信息
 
 ```shell
 $ sls --debug
 ```
 
-&nbsp;
+### 4. 移除
 
-### 5. Remove
+通过以下命令移除部署的 API 网关
 
 ```shell
 $ sls remove --debug
 ```
 
-### More Components
+### 账号配置（可选）
 
-Checkout the [Serverless Components](https://github.com/serverless/components) repo for more information.
+当前默认支持 CLI 扫描二维码登录，如您希望配置持久的环境变量/秘钥信息，也可以本地创建 `.env` 文件
+
+```shell
+$ touch .env # 腾讯云的配置信息
+```
+
+在 `.env` 文件中配置腾讯云的 SecretId 和 SecretKey 信息并保存
+
+如果没有腾讯云账号，可以在此 [注册新账号](https://cloud.tencent.com/register)。
+
+如果已有腾讯云账号，可以在 [API 密钥管理](https://console.cloud.tencent.com/cam/capi) 中获取 `SecretId` 和`SecretKey`.
+
+```text
+# .env
+TENCENT_SECRET_ID=123
+TENCENT_SECRET_KEY=123
+```
+
+### 更多组件
+
+可以在 [Serverless Components](https://github.com/serverless/components) repo 中查询更多组件的信息。
